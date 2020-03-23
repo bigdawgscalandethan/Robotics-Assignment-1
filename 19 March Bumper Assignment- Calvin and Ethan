@@ -1,10 +1,9 @@
 
 //DECLARE VARIABLES
 int  l_motor = 0;
-int  r_motor = 2;
-int pause = 5000; 
-int right_bumper = 4;
-int left_bumper = 1;
+int  r_motor = 2; 
+int right_bumper = 9;
+int left_bumper = 8;
 int counter = 0 ; 
 int speed = 100 ; 
 int reversespeed= -100 ; 
@@ -16,6 +15,7 @@ int main()
   while(1){
    //go forward
  forward();
+ printf("in the loop\n");
     
    //look for collision 
   
@@ -25,7 +25,7 @@ int main()
     if(digital(left_bumper)){   //second bumper triggered, end of program 
   turn_right(); 
   }
-   
+   }
   ao();                  //shutdown 
     return 0;
 }
@@ -33,18 +33,15 @@ int main()
 void forward (){
    motor(l_motor,speed);
    motor(r_motor,speed);
-} 
 }
 void turn_right (){
   motor(l_motor,speed);
    motor(r_motor,reversespeed);
-    msleep(pause);
     ao();
 }    
 void turn_left (){
   motor(l_motor,reversespeed);
    motor(r_motor,speed);
-    msleep(pause);
     ao();
 }
 
