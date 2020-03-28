@@ -1,0 +1,90 @@
+// Created on Mon March 23 2020
+int l_motor= 0;
+int r_motor= 2;
+int speed= 100;
+int pause = 1000;
+int leftbumper=8;
+int rightbumper=9;
+int halfspeed=50;
+int halfpause=500; 
+int rightsensor= 6;
+int leftsensor= 5; 
+int rightrange= 2; 
+int leftrange =0; 
+
+
+int main(){
+	printf("starting\n");
+msleep(pause);
+
+	while (analog(rightrange)>450){
+	turnright();
+		printf("turningright\n");
+	}
+	ao();
+	while (digital(leftbumper)==0 && digital(rightbumper)==0){
+		forward();
+		printf("movingforward\n");
+	}
+		
+		ao();
+	reverse();
+	msleep(halfpause);
+			turnleft();
+			msleep(350);
+		ao();
+	
+
+		printf("exitedloop#1\n");
+		while(analog(rightsensor)==0 && analog(leftsensor )==0){
+			forward();
+		if (analog(rightsensor)>0){
+			turnleftgradual();
+			printf("turningleft\n");
+			msleep(halfpause);
+		}
+		if (analog(leftsensor)>0){
+			turnright();
+			printf("turningright\n");
+			msleep(halfpause);
+		}
+	
+	}
+
+return 0;
+ }
+
+
+
+int forward(){
+motor(l_motor,speed);
+   motor(r_motor,speed);
+   
+
+}
+int turnright (){
+  motor(l_motor,speed);
+   motor(r_motor,halfspeed);
+   
+}
+
+   
+int turnleft (){
+  motor(l_motor,-speed);
+   motor(r_motor,speed);
+    
+   
+}
+int turnleftgradual (){
+  motor(l_motor,halfspeed);
+   motor(r_motor,speed);
+    
+   
+}
+
+int reverse(){
+	motor(l_motor,-speed);
+   motor(r_motor,-speed);
+   
+
+}
