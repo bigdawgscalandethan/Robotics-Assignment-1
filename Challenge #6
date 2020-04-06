@@ -1,0 +1,72 @@
+int l_motor= 0;
+int r_motor= 2;
+int speed= 100;
+int pause = 1000;
+int leftbumper=8;
+int rightbumper=9;
+int halfspeed=50;
+int halfpause=500; 
+int rightsensor= 6;
+int leftsensor= 5; 
+int rightrange= 2; 
+int leftrange =0; 
+int middlerange= 1;
+int longpause= 2000;
+int rangedistance= 550;
+int slightpause= 350;
+int midrangedistance= 400;
+int counter = 0; 
+
+
+int main(){
+	int thing = 1;
+for(thing=1 ; thing<=6;thing++){
+	forward();
+	msleep(longpause);
+	turnleftgradual();
+	msleep(pause);
+	printf("thing /d \n");
+}
+
+return 0;
+ }
+ 
+ int forward(){
+motor(l_motor,speed);
+   motor(r_motor,speed);
+   
+
+}
+int turnright (){
+  motor(l_motor,speed);
+   motor(r_motor,-30);
+   
+}
+int sharpright (){
+  motor(l_motor,speed);
+   motor(r_motor,-speed);
+   
+}
+
+
+   
+int turnleft (){
+  motor(l_motor,-speed);
+   motor(r_motor,speed);
+    
+   
+}
+int turnleftgradual (){
+  motor(l_motor,-30);
+   motor(r_motor,speed);
+    
+   
+}
+
+int reverse(){
+	motor(l_motor,-speed);
+   motor(r_motor,-speed);
+   
+
+}
+
